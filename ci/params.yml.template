@@ -16,8 +16,8 @@ gcp_service_account_key: |
 tfvars: |
   env_prefix       = "$PKS_ENV_PREFIX"
   project          = "$GCP_PROJECT_ID"
-  region           = "$GCP_REGION"
-  zones            = ["$GCP_ZONE_1", "$GCP_ZONE_2", "$GCP_ZONE_3"]
+  region           = "us-central1"
+  zones            = ["us-central1-a", "us-central1-b", "us-central1-c"]
   opsman_image_url = "https://storage.googleapis.com/ops-manager-us/pcf-gcp-2.2-build.305.tar.gz"
   service_account_key = <<SERVICE_ACCOUNT_KEY
   $GCP_SERVICE_ACCOUNT_KEY

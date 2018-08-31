@@ -5,7 +5,3 @@ GCP_SERVICE_ACCOUNT_KEY_PATH="PATH INCLUDING FILE NAME"
 PKS_ENV_PREFIX="pks"
 PKS_CLI_USERNAME=""
 PKS_CLI_PASSWORD=""
-GCP_REGION="us-central1"     # Can be changed to local region
-GCP_ZONE_1="us-central1-a"   # Can be changed to zones within local region
-GCP_ZONE_2="us-central1-b"   # Can be changed to zones within local region
-GCP_ZONE_3="us-central1-c"   # Can be changed to zones within local region
