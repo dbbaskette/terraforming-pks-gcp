@@ -8,8 +8,8 @@ credentials.yml
 .history/*
 .vscode*
 params.yml
-variables.txt.dbb
 .gitig*
+<<<<<<< HEAD
 
 ci/variables.txt.edit
 
@@ -19,3 +19,7 @@ ci/variables.txt
 
 ci/variables.txt
 *.dbb
+=======
+*.dbb
+*.swp
+>>>>>>> 4525d384b0fe429a80827e26259c66ec552f4d10
