@@ -64,7 +64,6 @@ Password:  password
 The Last Step of the Pipeline, SHOW-NEXT-INSTRUCTIONS, has a task that displays the procedures for creating a K8S cluster.   You should be able to cut and past from that screen.
 
 
-
 ### Tearing down environment
 
 To tear down the installation, simply trigger the wipe-env task.   There might be a few cluster specific things to clean up.  If the task fails, you can clean those things up manually and then trigger it again. If ops-man was not created poroperly, wipe-env will not work in it's current state.   You will have to delete ALL object manually.  Sometimes objects are easy to miss, so it's also recommended to change the prefix of the next deployment and the bucket name.    This will ensure you don't have any conflicts.
