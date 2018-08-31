@@ -887,7 +887,7 @@ jobs:
     - get: terraform-state
       passed:
       - deploy-pks
-      trigger: true
+      trigger: false
   - task: configure-pks-cli-user
     params:
       OPS_MGR_USR: {{ops_mgr_usr}}
