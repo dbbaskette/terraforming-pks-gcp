@@ -8,13 +8,6 @@ credentials.yml
 .history/*
 .vscode*
 params.yml
-variables.txt.dbb
 .gitig*
-
-ci/variables.txt.edit
-
-ci/variables.txt
-
-ci/variables.txt
-
-ci/variables.txt
+*.dbb
+*.swp
