@@ -2,7 +2,7 @@
 
 This Repo is based on  [https://github.com/pivotal-cf/terraforming-gcp](https://github.com/pivotal-cf/terraforming-gcp). and the work at (https://github.com/making/terraforming-pks-gcp).  The Concourse Pipline work has been completed and modified to keep from having to download a 3GB file locally to then just send it back up.
 
-## Prerequisites
+### Prerequisites
 
 The prerequisites can all installed on your local system via brew, so if you don't have brew....go get it.   Your system needs the `gcloud` cli, as well as `terraform`,  `gettext`, and of course, `Docker`:
 
@@ -12,6 +12,8 @@ brew install Caskroom/cask/google-cloud-sdk
 brew install terraform
 brew install gettext
 ```
+
+**MAKE SURE YOU HAVE ENOUGH __RESOURCE QUOTA IN THE REGION OF DEPLOYMENT__ TO CREATE THE INFRASTRUCTURE AND A PKS CLUSTER.   (CPU/RAM/STORAGE,etc)**
 
 ### Service Account
 
@@ -39,7 +41,7 @@ GCP_SERVICE_ACCOUNT_KEY_PATH: The fully qualified path to a JSON Key with Owner 
 PKS_CLI_USERNAME: A username for use in PKS CLI. (No underscores)
 PKS_CLI_PASSWORD: Password for the CLI User
 ```
-## Running
+### Running
 
 Note: please make sure you have populated the `variables.txt` file above as mentioned.
 
@@ -65,4 +67,4 @@ The Last Step of the Pipeline, SHOW-NEXT-INSTRUCTIONS, has a task that displays 
 
 ### Tearing down environment
 
-To tear down the installation, simply trigger the wipe-env task.   There might be a few cluster specific things to clean up.  If the task fails, you can clean those things up manually and then trigger it again.
+To tear down the installation, simply trigger the wipe-env task.   There might be a few cluster specific things to clean up.  If the task fails, you can clean those things up manually and then trigger it again. If ops-man was not created poroperly, wipe-env will not work in it's current state.   You will have to delete ALL object manually.  Sometimes objects are easy to miss, so it's also recommended to change the prefix of the next deployment and the bucket name.    This will ensure you don't have any conflicts.
