@@ -45,7 +45,7 @@ resources:
   type: keyval
 
 groups:
-- name: pks
+- name: build-pks-infrastructure
   jobs:
   - bootstrap-terraform-state
   - pave-gcp
@@ -56,15 +56,24 @@ groups:
   - config-pks
   - upload-stemcell
   - deploy-pks
-  - wipe-env
+ # - wipe-env
   - show-next-instructions
   - create-pks-cli-user
+  
+
+- name: build-k8s-cluster
+  jobs:
   - create-pks-cluster
 
-- name: nat
+- name: use-nat
   jobs:
   - start-nat
   - stop-nat
+
+- name: wipe-env
+  jobs:
+  - wipe-env
+
 
 jobs:
 - name: bootstrap-terraform-state
@@ -887,7 +896,7 @@ jobs:
     - get: terraform-state
       passed:
       - deploy-pks
-      trigger: false
+      trigger: true
   - task: configure-pks-cli-user
     params:
       OPS_MGR_USR: {{ops_mgr_usr}}
@@ -950,6 +959,8 @@ jobs:
           echo "Example: "
           echo "   pks login -a $UAA_URL -u $PKS_CLI_USERNAME -p <pks-cli-password-provided>"
 
+
+
 - name: wipe-env
   build_logs_to_retain: 5
   serial_groups: [terraform]
@@ -964,6 +975,10 @@ jobs:
       passed:
       - pave-gcp
   - task: delete-installation
+    on_success:
+    task: terraform-destroy
+    on_failure:
+    task: terraform-destroy
     params:
       OPS_MGR_USR: ((ops_mgr_usr))
       OPS_MGR_PWD: ((ops_mgr_pwd))
@@ -1026,6 +1041,7 @@ jobs:
                     -state terraform-state/terraform.tfstate \
                     -state-out tfstate-output/terraform.tfstate \
                     template 
+                  
 
 - name: create-pks-cluster
   plan:
@@ -1033,7 +1049,7 @@ jobs:
     - get: terraform-state
       passed:
       - create-pks-cli-user
-      trigger: true
+      trigger: false
 
   - task: create-pks-cluster
     params:

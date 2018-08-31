@@ -4,12 +4,11 @@ This Repo is based on  [https://github.com/pivotal-cf/terraforming-gcp](https://
 
 ### Prerequisites
 
-The prerequisites can all installed on your local system via brew, so if you don't have brew....go get it.   Your system needs the `gcloud` cli, as well as `terraform`,  `gettext`, and of course, `Docker`:
+The prerequisites can all installed on your local system via brew, so if you don't have brew....go get it.   Your system needs the `gcloud` cli, as well as `gettext`, and of course, `Docker`:
 
 ```bash
 brew update
 brew install Caskroom/cask/google-cloud-sdk
-brew install terraform
 brew install gettext
 ```
 
@@ -40,6 +39,12 @@ GCP_PROJECT_ID: Your GCP Project name
 GCP_SERVICE_ACCOUNT_KEY_PATH: The fully qualified path to a JSON Key with Owner privileges for your GCP account.  
 PKS_CLI_USERNAME: A username for use in PKS CLI. (No underscores)
 PKS_CLI_PASSWORD: Password for the CLI User
+PKS_INITIAL_CLUSTER_NAME=""
+PKS_INITIAL_CLUSTER_SIZE="small / medium / large"
+GCP_REGION="Can be changed to local region"
+GCP_ZONE_1="Can be changed to zones within local region"
+GCP_ZONE_2="Can be changed to zones within local region"
+GCP_ZONE_3="Can be changed to zones within local region"
 ```
 ### Running
 
@@ -63,6 +68,7 @@ Password:  password
 
 The Last Step of the Pipeline, SHOW-NEXT-INSTRUCTIONS, has a task that displays the procedures for creating a K8S cluster.   You should be able to cut and past from that screen.
 
+These is also an Optional Task available that will create a cluster for you.  
 
 ### Tearing down environment
 
