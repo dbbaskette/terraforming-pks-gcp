@@ -4,15 +4,30 @@ This Repo is based on  [https://github.com/pivotal-cf/terraforming-gcp](https://
 
 ### Prerequisites
 
-The prerequisites can all installed on your local system via brew, so if you don't have brew....go get it.   Your system needs the `gcloud` cli, as well as `gettext`, and of course, `Docker`:
+The prerequisites can all installed on your local system via brew, so if you don't have brew....go get it.   Your system needs the `gcloud` cli, fly-cli (concourse) as well as `gettext`, and of course, `Docker.  Here are the OS-X installation commands:
 
 ```bash
 brew update
 brew install Caskroom/cask/google-cloud-sdk
 brew install gettext
+wget https://github.com/concourse/concourse/releases/download/v4.1.0/fly_darwin_amd64
+mv fly_darwin_amd64 /usr/local/bin/fly
+chmod +x fly
 ```
 
-**MAKE SURE YOU HAVE ENOUGH __RESOURCE QUOTA IN THE REGION OF DEPLOYMENT__ TO CREATE THE INFRASTRUCTURE AND A PKS CLUSTER.   (CPU/RAM/STORAGE,etc)**
+### GCP Account
+
+##### MAKE SURE YOU HAVE ENOUGH __RESOURCE QUOTA IN THE REGION OF DEPLOYMENT__ TO CREATE THE INFRASTRUCTURE AND A PKS CLUSTER.   (CPU/RAM/STORAGE,etc)
+1) If this is the first time you have used the account on your system, you will have to run these commands:
+```
+gcloud auth login
+gcloud config set project ${PROJECT_ID}
+```
+
+You will need to enable the following Google Cloud APIs:
+* Compute Engine API
+* Identity and Access Management
+* Cloud Resource Manager
 
 ### Service Account
 
